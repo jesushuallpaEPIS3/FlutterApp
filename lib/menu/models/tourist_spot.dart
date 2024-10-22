@@ -5,14 +5,16 @@ class TouristSpot {
   final String name;
   final String description;
   final String category;
-  final String imageUrl;
+  final String image;
+  final String imageFondo;
   final double rating;
 
   TouristSpot({
     required this.name,
     required this.description,
     required this.category,
-    required this.imageUrl,
+    required this.image,
+    required this.imageFondo,
     required this.rating,
   });
 
@@ -21,7 +23,8 @@ class TouristSpot {
         'name': name,
         'description': description,
         'category': category,
-        'imageUrl': imageUrl,
+        'image': image, // Usar 'image' en lugar de 'imageUrl'
+        'imageFondo': imageFondo, // Asegurar que se incluya 'imageFondo'
         'rating': rating,
       };
 
@@ -31,7 +34,8 @@ class TouristSpot {
       name: json['name'],
       description: json['description'],
       category: json['category'],
-      imageUrl: json['imageUrl'],
+      image: json['image'], // Asignar correctamente 'image'
+      imageFondo: json['imageFondo'], // Asignar correctamente 'imageFondo'
       rating: json['rating'],
     );
   }

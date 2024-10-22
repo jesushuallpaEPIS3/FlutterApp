@@ -1,16 +1,91 @@
 [
   {
-    "name": "Camino Inca Tarata - Santa María",
-    "description": "A 15 km de Tarata, 15 min en auto, con recorrido libre.",
-    "category": "Aventura",
-    "imageUrl": "https://example.com/image1.jpg",
+    "name": "Plaza Coronel Gregorio Albarracín (Plaza Principal de Tarata)",
+    "description": "Centro de la ciudad, la plaza de Tarata está a 3070 msnm. Inaugurada en 1956, tiene un busto del Coronel Gregorio Albarracín, astas para izar banderas, una lámpara votiva, jardines, glorietas y piletas ornamentales.",
+    "Historia": "Centro de la ciudad. La plaza de Tarata se encuentra situado a una altitud de 3070 metros sobre el nivel del mar (msnm). La actual Plaza Principal fue inaugurada el 7 de junio de 1956, siendo presidente constitucional de la República el señor General de División Don Manuel A. Odria. Consta de un busto principal en el que se encuentra plasmado el Centauro de las Vilcas, Coronel Gregorio Albarracín Lanchipa; dos astas que sirven para izar el Pabellón Nacional y la bandera de Tarata: tiene también una Lámpara Votiva. Se encuentra rodeada por cuatro jardines con dos glorietas en la parte superior y dos piletas ornamentales en la parte inferior.",
+    "category": "Cultural",
+    "image": "assets/images/1 RUTA DE ACCESO A TARATA/20240420054308_IMG_6412 (1).jpg",
+    "imageFondo": "assets/images/1 RUTA DE ACCESO A TARATA/20240420054308_IMG_6412 (1).jpg",
+    "rating": 4.8
+  },
+  {
+    "name": "Mercado Central de Abastos Tarata",
+    "description": "El Mercado Central de Abastos de Tarata, ubicado en la calle 28 de Julio, a 3077 msnm, es un centro minorista que funciona desde 1966, con 58 puestos fijos y 28 activos.",
+    "Historia": "El Mercado Central de Abastos Tarata está localizado en La calle 28 de Julio s/n piso 1 kilómetro 0, al frente del Coliseo en el distrito de Tarata. Se encuentra situado a una altitud de 3077 metros sobre el nivel del mar (msnm). Es un centro de abastecimiento zonal de tipo Minorista que inició actividades en el año 1966, alberga 58 puestos fijos y tiene 28 puestos activos permanentemente.",
+    "category": "Cultural",
+    "image": "assets/images/1 RUTA DE ACCESO A TARATA/Captura de pantalla 2024-09-30 094247.png",
+    "imageFondo": "assets/images/1 RUTA DE ACCESO A TARATA/Captura de pantalla 2024-09-30 094247.png",
+    "rating": 4.5
+  },
+  {
+    "name": "Templo San Benedicto",
+    "description": "El templo San Benedicto, de origen colonial, es uno de los más antiguos de Tacna, ubicado a 3077 msnm. Construido en 1611 e inaugurado en 1741, es Patrimonio Cultural de la Nación.",
+    "Historia": "El templo San Benedicto, de origen colonial, es uno de los más antiguos de la región Tacna. Se encuentra situado a una altitud de 3077 metros sobre el nivel del mar. Su construcción se inició en 1611 y fue inaugurada el 3 de enero de 1741. Es considerado Patrimonio Cultural de la Nación por el Ministerio de Cultura.",
+    "category": "Cultural",
+    "image": "assets/images/1 RUTA DE ACCESO A TARATA/20240420055036_IMG_6421 (1).jpg",
+    "imageFondo": "assets/images/1 RUTA DE ACCESO A TARATA/20240420055036_IMG_6421 (1).jpg",
     "rating": 4.9
   },
   {
-    "name": "Nombre del local",
-    "description": "Localización del local.",
-    "category": "Cultural",
-    "imageUrl": "https://example.com/image2.jpg",
-    "rating": 4.5
+    "name": "Municipalidad Provincial de Tarata",
+    "description": "La municipalidad provincial de Tarata, ubicada frente a la plaza principal, se enfoca en la gestión pública, mejorando la calidad educativa y fomentando el empleo formal.",
+    "Historia": "La municipalidad provincial de Tarata se encuentra situada frente a la plaza principal. Su misión es organizar y conducir la gestión pública de acuerdo a sus competencias, promoviendo el mejoramiento de la calidad educativa y la ampliación de fuentes de trabajo formal.",
+    "category": "Institucional",
+    "image": "assets/images/1 RUTA DE ACCESO A TARATA/WhatsApp Image 2024-09-30 at 15.09.40.jpeg",
+    "imageFondo": "assets/images/1 RUTA DE ACCESO A TARATA/WhatsApp Image 2024-09-30 at 15.09.40.jpeg",
+    "rating": 4.3
+  },
+
+
+
+
+  {
+    "name": "Camino Inca",
+    "description": "El Camino Inca es una ruta andina a 3200 msnm, que conecta Tarata con Ticaco y atraviesa paisajes y andenerías preincaicas.",
+    "Historia": "En esta ruta se puede apreciar las andenerías de Tarata, el sitio arqueológico de Santa María y el de QalaQala. Está a 15 km del poblado de Tarata, a 15 min en auto. El recorrido es libre.",
+    "category": "Aventura",
+    "image": "assets/images/2 SENDERISMO/camino_inca.png",
+    "imageFondo": "assets/images/2 SENDERISMO/camino_inca_fondo.png",
+    "rating": 4.9
+  },
+  {
+    "name": "Cueva de Qala Qala",
+    "description": "La Cueva de Qala Qala es una estructura prehispánica ubicada a 3066 msnm, construida con piedras y barro, que alcanza 1.8 m de altura.",
+    "Historia": "El sitio consta de pequeños refugios y hondonadas. Se ubica en el sector Yunga del distrito de Tarata, se accede por la ruta prehispánica que se desprende del Camino Inca hacia Santa María.",
+    "category": "Aventura",
+    "image": "assets/images/2 SENDERISMO/cueva_qala_qala.png",
+    "imageFondo": "assets/images/2 SENDERISMO/cueva_qala_qala_fondo.png",
+    "rating": 4.7
+  },
+  {
+    "name": "Centro Arqueológico Santa María",
+    "description": "El Centro Arqueológico Santa María, a 3082 msnm, es un asentamiento inca con recintos, terrazas, hornacinas y un camino interno bien conservado.",
+    "Historia": "Ubicado en el sector Yunga de Tarata, se accede a pie por el Camino Inca. Sus construcciones y hornacinas son claras muestras de factura inca. También contiene restos de un puesto chileno de la época de 1880.",
+    "category": "Aventura",
+    "image": "assets/images/2 SENDERISMO/centro_santa_maria.png",
+    "imageFondo": "assets/images/2 SENDERISMO/centro_santa_maria_fondo.png",
+    "rating": 4.8
+  },
+
+
+
+
+  {
+    "name": "Baños Termales de Putina - Ticaco",
+    "description": "Baños termales ubicados a más de 3200 msnm, con pozas y una piscina de aguas termales que alcanzan hasta los 75 °C. Ideal para todas las edades.",
+    "Historia": "En este lugar se encuentra un ojo de aguas termales que alcanza una temperatura de 47 °C y puede llegar hasta los 75 °C. Hay nueve pozas individuales y una piscina, con tarifas diferenciadas para turistas nacionales y extranjeros. Se ubica a 13.5 km de la ciudad de Tarata.",
+    "category": "Relax",
+    "image": "assets/images/3 RELAX/banos_termales_putina.png",
+    "imageFondo": "assets/images/3 RELAX/banos_termales_putina_fondo.png",
+    "rating": 4.8
+  },
+  {
+    "name": "Taller de Cerámica",
+    "description": "El taller de cerámica de Ticaco, a 3277 msnm, ofrece actividades para locales y demostraciones a turistas sobre la cerámica tradicional.",
+    "Historia": "Ubicado al costado de la plaza principal de Ticaco, la municipalidad organiza talleres de cerámica para la comunidad y turistas, demostrando la tradición alfarera de la zona.",
+    "category": "Relax",
+    "image": "assets/images/3 RELAX/taller_ceramica.png",
+    "imageFondo": "assets/images/3 RELAX/taller_ceramica_fondo.png",
+    "rating": 4.6
   }
 ]

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'favorites_screen.dart'; // Importación de la pantalla de Favoritos.
 import 'home_screen.dart'; // Importación de la pantalla Home.
 import 'settings_screen.dart'; // Importa la pantalla de configuraciones
-import 'tourist_spots_screen.dart'; // Importa la pantalla de puntos turísticos
 
 void main() {
   runApp(MyApp());
@@ -12,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MainScreen(),
+      home: MainScreen(), // Pantalla principal con navegación
     );
   }
 }
