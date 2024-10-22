@@ -11,28 +11,6 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          //Container(
-          //  color: Colors.green,
-          //  padding: EdgeInsets.all(8),
-          //  child: Column(
-          //    children: [
-          //      Image.asset(
-          //        'assets/images/home_image.png', // Imagen local de ejemplo
-          //        height: 150,
-          //        fit: BoxFit.cover,
-          //      ),
-          //      SizedBox(height: 10),
-          //      Text(
-          //        'BIENVENIDO A TARATA GO',
-          //        style: TextStyle(
-          //          color: Colors.white,
-          //          fontSize: 18,
-          //          fontWeight: FontWeight.bold,
-          //        ),
-          //      ),
-          //    ],
-          //  ),
-          //),
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,
@@ -49,7 +27,10 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => TouristSpotsScreen()),
+                        builder: (context) => TouristSpotsScreen(
+                          category: 'Puntos_Turísticos', // Pasar la categoría
+                        ),
+                      ),
                     );
                   },
                 ),
@@ -57,26 +38,46 @@ class HomeScreen extends StatelessWidget {
                   title: 'Ruta Tarata',
                   imagePath: 'assets/images/RutaTarata0.png', // Imagen local
                   gradientColors: [Colors.orange, Colors.deepOrange],
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TouristSpotsScreen(
+                          category: 'Ruta_Tarata', // Pasar la categoría
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                //MenuOption(
-                //  title: 'Gastronomía',
-                //  imagePath: 'assets/images/food.png', // Imagen local
-                //  gradientColors: [Colors.pink, Colors.deepPurple],
-                //),
-                //MenuOption(
-                //  title: 'Estadía',
-                //  imagePath: 'assets/images/hotel.png', // Imagen local
-                //  gradientColors: [Colors.yellow, Colors.amber],
-                //),
                 MenuOption(
                   title: 'Senderismo',
                   imagePath: 'assets/images/Senderismo0.png', // Imagen local
                   gradientColors: [Colors.blue, Colors.lightBlueAccent],
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TouristSpotsScreen(
+                          category: 'Senderismo', // Pasar la categoría
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 MenuOption(
                   title: 'Relajamiento',
                   imagePath: 'assets/images/Relajamiento0.png', // Imagen local
                   gradientColors: [Colors.green, Colors.teal],
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TouristSpotsScreen(
+                          category: 'Relajamiento', // Pasar la categoría
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -89,7 +90,7 @@ class HomeScreen extends StatelessWidget {
 
 class MenuOption extends StatelessWidget {
   final String title;
-  final String imagePath; // Nueva propiedad para la ruta de la imagen local
+  final String imagePath;
   final List<Color> gradientColors;
   final VoidCallback? onTap;
 
@@ -115,13 +116,12 @@ class MenuOption extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            // Imagen ocupando todo el contenedor con degradado
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 image: DecorationImage(
                   image: AssetImage(imagePath),
-                  fit: BoxFit.cover, // La imagen cubre todo el espacio
+                  fit: BoxFit.cover,
                 ),
               ),
               child: Container(
@@ -141,7 +141,7 @@ class MenuOption extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white, // Texto en blanco
+                  color: Colors.white,
                 ),
                 textAlign: TextAlign.center,
               ),

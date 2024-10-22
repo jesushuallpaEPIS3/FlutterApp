@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'masinfo.dart'; // Importa la pantalla de detalles de puntos turísticos
+import 'detalle.dart'; // Importa la pantalla de detalles de puntos turísticos
 
 class TouristSpotsScreen extends StatelessWidget {
   const TouristSpotsScreen({super.key});

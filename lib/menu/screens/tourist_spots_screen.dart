@@ -6,14 +6,17 @@ import '../home.dart'; // Importa la pantalla Home.
 import '../settings_screen.dart'; // Importa la pantalla de Configuración.
 
 class TouristSpotsScreen extends StatefulWidget {
+  final String category; // Recibe la categoría
+
+  TouristSpotsScreen({required this.category});
+
   @override
   _TouristSpotsScreenState createState() => _TouristSpotsScreenState();
 }
 
 class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
   late Future<List<TouristSpot>> _touristSpotsFuture;
-  int _selectedIndex =
-      1; // Establece la pantalla de Puntos Turísticos como seleccionada
+  int _selectedIndex = 2; // Establece Home como la pantalla inicial
 
   @override
   void initState() {
@@ -42,7 +45,6 @@ class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => MainScreen()));
         break;
-      case 3:
     }
   }
 
@@ -87,13 +89,30 @@ class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
                   return Center(
                       child: Text('No hay puntos turísticos disponibles'));
                 } else {
-                  // Mostrar la lista de puntos turísticos
-                  return ListView.builder(
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, index) {
-                      TouristSpot spot = snapshot.data![index];
+                  // Filtrar los puntos turísticos por la categoría seleccionada
+                  List<TouristSpot> filteredSpots;
+                  if (widget.category == "Puntos_Turísticos") {
+                    // Si la categoría es "Puntos_Turísticos", mostramos todos los puntos
+                    filteredSpots = snapshot.data!;
+                  } else {
+                    // Si no, filtramos por la categoría seleccionada
+                    filteredSpots = snapshot.data!
+                        .where((spot) => spot.category == widget.category)
+                        .toList();
+                  }
 
-                      // Ahora todas las tarjetas tendrán un fondo similar
+                  if (filteredSpots.isEmpty) {
+                    return Center(
+                        child: Text(
+                            'No hay puntos turísticos para la categoría seleccionada.'));
+                  }
+
+                  // Mostrar la lista filtrada o completa de puntos turísticos
+                  return ListView.builder(
+                    itemCount: filteredSpots.length,
+                    itemBuilder: (context, index) {
+                      TouristSpot spot = filteredSpots[index];
+
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 10.0, horizontal: 16.0),
