@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'tourist_spots_screen.dart'; // Importa la pantalla de puntos turísticos
+import 'screens/tourist_spots_screen.dart'; // Importa la pantalla de puntos turísticos
 
 class HomeScreen extends StatelessWidget {
   @override
