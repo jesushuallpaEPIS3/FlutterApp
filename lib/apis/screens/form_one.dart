@@ -63,7 +63,7 @@ class _WeatherHomeState extends State<WeatherHome> {
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) =>
-            FormTwo(), // Cambiar por la nueva pantalla
+            const FormTwo(), // Cambiar por la nueva pantalla
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           const begin = 0.0;
           const end = 1.0;
@@ -94,46 +94,78 @@ class _WeatherHomeState extends State<WeatherHome> {
         DateFormat('EEEE d, MMMM yyyy').format(DateTime.now());
     String formattedTime = DateFormat('hh:mm a').format(DateTime.now());
 
+    String backgroundImage;
+
+    if (weatherInfo?.weather.isNotEmpty ?? false) {
+      // Cambia la imagen según el clima
+      switch (weatherInfo!.weather[0].main.toLowerCase()) {
+        case 'clear':
+          backgroundImage = 'assets/images/clear.jpg';
+          break;
+        case 'clouds':
+          backgroundImage = 'assets/images/cloudy.jpg';
+          break;
+        case 'rain':
+          backgroundImage = 'assets/images/rain.jpg';
+          break;
+        default:
+          backgroundImage = 'assets/images/default.jpg'; // Imagen por defecto
+      }
+    } else {
+      backgroundImage = 'assets/images/default.jpg'; // Imagen por defecto
+    }
+
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 68, 184, 97),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: isLoading
-                  ? const CircularProgressIndicator(color: Colors.white)
-                  : weatherInfo != null
-                      ? WeatherDetail(
-                          weather: weatherInfo!,
-                          formattedDate: formattedDate,
-                          formattedTime: formattedTime,
-                        )
-                      : const Text(
-                          'Error al cargar el clima',
-                          style: TextStyle(color: Colors.white),
-                        ),
-            ),
-            const SizedBox(height: 20),
-            // Mostrar el mensaje de cuenta regresiva
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.black54,
-                borderRadius: BorderRadius.circular(10),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(backgroundImage),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: isLoading
+                    ? const CircularProgressIndicator(color: Colors.white)
+                    : weatherInfo != null
+                        ? WeatherDetail(
+                            weather: weatherInfo!,
+                            formattedDate: formattedDate,
+                            formattedTime: formattedTime,
+                          )
+                        : const Text(
+                            'Error al cargar el clima',
+                            style: TextStyle(color: Colors.white),
+                          ),
               ),
-              child: Text(
-                'Ya estamos listos para entrar a la aventura en $countdown segundos',
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+              const SizedBox(height: 20),
+              // Mostrar el mensaje de cuenta regresiva en el pie de la pantalla
+              Align(
+                alignment: Alignment.bottomCenter, // Ubica el texto en el pie
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(bottom: 20), // Margen inferior
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    'Ya estamos listos para empezar la aventura en $countdown tarata',
+                    style: const TextStyle(
+                      fontSize: 14, // Tamaño de fuente más pequeño
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-                textAlign: TextAlign.center,
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -152,64 +184,89 @@ class WeatherDetail extends StatelessWidget {
     required this.formattedTime,
   });
 
+  // Función que retorna la recomendación según el clima
+  String getRecommendation(String weatherCondition) {
+    switch (weatherCondition.toLowerCase()) {
+      case 'clear':
+        return '¡Está despejado, es un buen día para salir! No olvides disfrutarlo.';
+      case 'clouds':
+        return 'Hay nubes, es posible que llueva, así que mejor toma precauciones.';
+      case 'rain':
+        return 'Está lloviendo. Lleva un paraguas y evita mojarte.';
+      default:
+        return 'No estoy seguro del clima, así que mantente alerta y toma precauciones.';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          weather.name,
-          style: const TextStyle(
-            fontSize: 25,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          "${weather.currentTemperature.toStringAsFixed(2)}°C",
-          style: const TextStyle(
-            fontSize: 40,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        if (weather.weather.isNotEmpty)
-          Text(
-            weather.weather[0].main,
-            style: const TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+    String recommendation = weather.weather.isNotEmpty
+        ? getRecommendation(weather.weather[0].main)
+        : '';
+
+    return Card(
+      elevation: 5, // Sombra
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15), // Bordes redondeados
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Text(
+              weather.name,
+              style: const TextStyle(
+                fontSize: 25,
+                color: Colors.black, // Cambia el color según el fondo
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-        const SizedBox(height: 30),
-        Text(
-          formattedDate,
-          style: const TextStyle(
-            fontSize: 18,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          formattedTime,
-          style: const TextStyle(
-            fontSize: 18,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 30),
-        Container(
-          height: 200,
-          width: 200,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/clima.png"),
-              fit: BoxFit.cover,
+            Text(
+              "${weather.currentTemperature.toStringAsFixed(2)}°C",
+              style: const TextStyle(
+                fontSize: 40,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
+            if (weather.weather.isNotEmpty)
+              Text(
+                weather.weather[0].main,
+                style: const TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            const SizedBox(height: 20),
+            Text(
+              formattedDate,
+              style: const TextStyle(
+                fontSize: 18,
+                color: Colors.black,
+              ),
+            ),
+            Text(
+              formattedTime,
+              style: const TextStyle(
+                fontSize: 18,
+                color: Colors.black,
+              ),
+            ),
+            const SizedBox(height: 20),
+            // Añadir la recomendación en aimara
+            Text(
+              recommendation,
+              style: const TextStyle(
+                fontSize: 18,
+                color: Colors.redAccent,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
