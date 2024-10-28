@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/tourist_spot.dart'; // Importa la clase TouristSpot
-import '../services/tourist_spot_storage.dart'; // Importa la función de carga
+import 'package:flutter_application_2/menu/screens/TouristDetailScreen.dart';
+import '../models/tourist_spot.dart'; // Importa la lista touristSpots directamente
 import '../favorites_screen.dart'; // Importa la pantalla de Favoritos.
 import '../home.dart'; // Importa la pantalla Home.
 import '../settings_screen.dart'; // Importa la pantalla de Configuración.
@@ -15,15 +15,7 @@ class TouristSpotsScreen extends StatefulWidget {
 }
 
 class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
-  late Future<List<TouristSpot>> _touristSpotsFuture;
   int _selectedIndex = 2; // Establece Home como la pantalla inicial
-
-  @override
-  void initState() {
-    super.initState();
-    _touristSpotsFuture =
-        loadTouristSpotsFromFile(); // Cargar los datos del archivo
-  }
 
   // Función para cambiar la pantalla seleccionada en el BottomNavigationBar
   void _onItemTapped(int index) {
@@ -34,26 +26,52 @@ class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
     // Navegación a las diferentes pantallas
     switch (index) {
       case 0:
-        Navigator.pushReplacement(context,
+        Navigator.push(context,
             MaterialPageRoute(builder: (context) => FavoritesScreen()));
         break;
       case 1:
-        Navigator.pushReplacement(
+        Navigator.push(
             context, MaterialPageRoute(builder: (context) => SettingsScreen()));
         break;
       case 2:
-        Navigator.pushReplacement(
+        Navigator.push(
             context, MaterialPageRoute(builder: (context) => MainScreen()));
         break;
     }
   }
 
+  // Función para obtener el título de la pantalla según la categoría
+  String _getTitleByCategory() {
+    switch (widget.category) {
+      case 'Ruta_Tarata':
+        return 'Ruta Tarata';
+      case 'Senderismo':
+        return 'Senderismo';
+      case 'Relajamiento':
+        return 'Relajamiento';
+      case 'Puntos_Turísticos':
+        return 'Todos los Puntos Turísticos';
+      default:
+        return 'Puntos Turísticos';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    // Filtrar los puntos turísticos por la categoría seleccionada
+    List<TouristSpot> filteredSpots;
+    if (widget.category == "Puntos_Turísticos") {
+      filteredSpots = touristSpots; // Mostrar todos los puntos
+    } else {
+      filteredSpots = touristSpots
+          .where((spot) => spot.category == widget.category)
+          .toList();
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF3D6B35), // Verde Andino
-        title: const Text('Puntos Turísticos'),
+        title: Text(_getTitleByCategory()), // Título dinámico
       ),
       body: Column(
         children: [
@@ -61,6 +79,15 @@ class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
+              onChanged: (text) {
+                setState(() {
+                  // Filtra los puntos turísticos según el texto ingresado
+                  filteredSpots = touristSpots
+                      .where((spot) =>
+                          spot.name.toLowerCase().contains(text.toLowerCase()))
+                      .toList();
+                });
+              },
               decoration: InputDecoration(
                 hintText: 'Buscar',
                 prefixIcon: const Icon(Icons.search),
@@ -78,60 +105,36 @@ class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
 
           // Lista de puntos turísticos
           Expanded(
-            child: FutureBuilder<List<TouristSpot>>(
-              future: _touristSpotsFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Center(child: Text('Error al cargar los datos'));
-                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return Center(
-                      child: Text('No hay puntos turísticos disponibles'));
-                } else {
-                  // Filtrar los puntos turísticos por la categoría seleccionada
-                  List<TouristSpot> filteredSpots;
-                  if (widget.category == "Puntos_Turísticos") {
-                    // Si la categoría es "Puntos_Turísticos", mostramos todos los puntos
-                    filteredSpots = snapshot.data!;
-                  } else {
-                    // Si no, filtramos por la categoría seleccionada
-                    filteredSpots = snapshot.data!
-                        .where((spot) => spot.category == widget.category)
-                        .toList();
-                  }
-
-                  if (filteredSpots.isEmpty) {
-                    return Center(
-                        child: Text(
-                            'No hay puntos turísticos para la categoría seleccionada.'));
-                  }
-
-                  // Mostrar la lista filtrada o completa de puntos turísticos
-                  return ListView.builder(
+            child: filteredSpots.isEmpty
+                ? Center(
+                    child: Text(
+                        'No hay puntos turísticos para la categoría seleccionada.'))
+                : ListView.builder(
                     itemCount: filteredSpots.length,
                     itemBuilder: (context, index) {
                       TouristSpot spot = filteredSpots[index];
-
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 10.0, horizontal: 16.0),
                         child: FeaturedTouristSpotCard(
                           imageUrl: spot.image,
-                          imageFondo: spot.imageFondo, // Fondo para todas
+                          imageFondo: spot.imageFondo,
                           title: spot.name,
                           description: spot.description,
                           rating: spot.rating,
                           onTap: () {
-                            // Aquí puedes redirigir a una página de detalles
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    TouristDetailScreen(spot: spot),
+                              ),
+                            );
                           },
                         ),
                       );
                     },
-                  );
-                }
-              },
-            ),
+                  ),
           ),
         ],
       ),
@@ -140,8 +143,8 @@ class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
         backgroundColor: Colors.green,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.black54,
-        currentIndex: _selectedIndex, // Mantiene el índice actual
-        onTap: _onItemTapped, // Cambia la pantalla al presionar un botón
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
@@ -164,7 +167,7 @@ class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
 // Tarjeta destacada con fondo de imagen grande y superposición de contenido
 class FeaturedTouristSpotCard extends StatelessWidget {
   final String imageUrl;
-  final String imageFondo; // Imagen de fondo adicional
+  final String imageFondo;
   final String title;
   final String description;
   final double rating;
@@ -173,7 +176,7 @@ class FeaturedTouristSpotCard extends StatelessWidget {
   const FeaturedTouristSpotCard({
     super.key,
     required this.imageUrl,
-    required this.imageFondo, // Recibe la imagen de fondo
+    required this.imageFondo,
     required this.title,
     required this.description,
     required this.rating,
@@ -182,6 +185,9 @@ class FeaturedTouristSpotCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth =
+        MediaQuery.of(context).size.width; // Ancho de la pantalla
+
     return GestureDetector(
       onTap: onTap,
       child: Stack(
@@ -190,9 +196,9 @@ class FeaturedTouristSpotCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(50.0),
             child: Image.asset(
-              imageFondo, // Mostrar imagen de fondo
+              imageFondo,
               height: 200.0,
-              width: double.infinity,
+              width: screenWidth, // Usa el ancho de la pantalla
               fit: BoxFit.cover,
             ),
           ),
@@ -203,9 +209,9 @@ class FeaturedTouristSpotCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
               child: Image.asset(
-                imageUrl, // Imagen principal superpuesta
+                imageUrl,
                 height: 100.0,
-                width: 100.0,
+                width: 100.0, // Ajusta según el tamaño que prefieras
                 fit: BoxFit.cover,
               ),
             ),
@@ -248,7 +254,9 @@ class FeaturedTouristSpotCard extends StatelessWidget {
                       Text(
                         rating.toString(),
                         style: const TextStyle(
-                            fontSize: 16.0, color: Colors.white),
+                          fontSize: 16.0,
+                          color: Colors.white,
+                        ),
                       ),
                       Spacer(),
                       Icon(Icons.favorite, color: Colors.red, size: 24.0),

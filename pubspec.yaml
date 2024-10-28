@@ -23,7 +23,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-    - assets/data/puntos_turisticos.txt
     - assets/images/PT1.png
     - assets/images/PT22.png
     - assets/images/1 RUTA DE ACCESO A TARATA/20240420054308_IMG_6412 (1).jpg
