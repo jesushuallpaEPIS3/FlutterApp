@@ -9,6 +9,8 @@ class TouristSpot {
   final String location;
   final String phoneNumber;
   final String website;
+  final double latitude; // Nueva propiedad
+  final double longitude; // Nueva propiedad
 
   TouristSpot({
     required this.name,
@@ -20,6 +22,8 @@ class TouristSpot {
     required this.location,
     required this.phoneNumber,
     required this.website,
+    required this.latitude, // Nueva propiedad
+    required this.longitude, // Nueva propiedad
   });
 
   // Convertir un objeto TouristSpot a JSON
@@ -47,6 +51,8 @@ class TouristSpot {
       location: json['location'],
       phoneNumber: json['phoneNumber'],
       website: json['website'],
+      latitude: json['latitude'], // Agrega la asignación
+      longitude: json['longitude'], // Agrega la asignación
     );
   }
 }
@@ -66,6 +72,8 @@ final List<TouristSpot> touristSpots = [
     location: "Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 934",
     website: "https://plazatarata.com.pe",
+    latitude: -17.547, // Coordenadas de ejemplo
+    longitude: -70.212, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Mercado Central de Abastos Tarata",
@@ -80,6 +88,8 @@ final List<TouristSpot> touristSpots = [
     location: "Calle 28 de Julio, Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 935",
     website: "https://mercadotarata.com.pe",
+    latitude: -17.547, // Coordenadas de ejemplo
+    longitude: -70.212, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Templo San Benedicto",
@@ -94,6 +104,8 @@ final List<TouristSpot> touristSpots = [
     location: "Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 936",
     website: "https://templosanbenedicto.com.pe",
+    latitude: -17.547, // Coordenadas de ejemplo
+    longitude: -70.212, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Municipalidad Provincial de Tarata",
@@ -108,6 +120,8 @@ final List<TouristSpot> touristSpots = [
     location: "Plaza Principal, Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 937",
     website: "https://municipalidadtarata.gob.pe",
+    latitude: -17.547, // Coordenadas de ejemplo
+    longitude: -70.212, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Camino Inca",
@@ -120,6 +134,8 @@ final List<TouristSpot> touristSpots = [
     location: "Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 938",
     website: "https://caminoinca.com.pe",
+    latitude: -17.547, // Coordenadas de ejemplo
+    longitude: -70.212, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Cueva de Qala Qala",
@@ -132,6 +148,8 @@ final List<TouristSpot> touristSpots = [
     location: "Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 939",
     website: "https://cuevasqalqala.com.pe",
+    latitude: -17.547, // Coordenadas de ejemplo
+    longitude: -70.212, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Centro Arqueológico Santa María",
@@ -144,6 +162,8 @@ final List<TouristSpot> touristSpots = [
     location: "Santa María, Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 940",
     website: "https://arqueologiasantamaria.com.pe",
+    latitude: -17.547, // Coordenadas de ejemplo
+    longitude: -70.212, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Baños Termales de Putina - Ticaco",
@@ -156,6 +176,8 @@ final List<TouristSpot> touristSpots = [
     location: "Ticaco, Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 941",
     website: "https://banosputina.com.pe",
+    latitude: -17.547, // Coordenadas de ejemplo
+    longitude: -70.212, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Taller de Cerámica",
@@ -170,5 +192,7 @@ final List<TouristSpot> touristSpots = [
     location: "Ticaco, Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 942",
     website: "https://tallerdeceramicaticaco.com.pe",
+    latitude: -17.547, // Coordenadas de ejemplo
+    longitude: -70.212, // Coordenadas de ejemplo
   ),
 ];
