@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart'; // Importa provider
+import '/themeprovider.dart'; // Importa el ThemeProvider
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Obtener el ThemeProvider
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
@@ -39,29 +44,18 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.dark_mode),
             title: const Text('Modo Oscuro'),
-            onTap: () {
-              // Acción para Modo Oscuro
-            },
+            trailing: Switch(
+              value: themeProvider.isDarkMode, // El valor del switch depende del tema
+              onChanged: (value) {
+                themeProvider.toggleTheme(); // Cambia el estado del tema
+              },
+            ),
           ),
           ListTile(
             leading: const Icon(Icons.language),
             title: const Text('Lenguaje'),
             onTap: () {
               // Acción para Lenguaje
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.feedback),
-            title: const Text('Feedback'),
-            onTap: () {
-              // Acción para Feedback
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.help),
-            title: const Text('Ayuda?'),
-            onTap: () {
-              // Acción para Ayuda
             },
           ),
           const Spacer(),

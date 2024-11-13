@@ -1,7 +1,27 @@
 import 'package:flutter/material.dart';
-import 'screens/tourist_spots_screen.dart'; // Importa la pantalla de puntos turísticos
+import 'screens/tourist_spots_screen.dart';
+import 'package:flutter_application_2/apis/services/weather_service.dart'; // Servicio de clima
+import 'package:intl/intl.dart';
 
 class HomeScreen extends StatelessWidget {
+  final WeatherServices weatherService = WeatherServices();
+
+  // Método para obtener el clima
+  Future<Map<String, String>> fetchWeather() async {
+    final weatherData = await weatherService.fetchWeather();
+
+    // Si weatherData es null, devuelve un valor por defecto
+    if (weatherData == null) {
+      return {'temperature': 'N/A', 'condition': 'Desconocido'};
+    }
+
+    // Accede a los valores de la clase WeatherData
+    String temperature = weatherData.currentTemperature.toStringAsFixed(1);  // Redondeo a 1 decimal
+    String condition = weatherData.weather.isNotEmpty ? weatherData.weather[0].main : 'Desconocido';
+    
+    return {'temperature': temperature, 'condition': condition};
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,6 +31,37 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
+          FutureBuilder<Map<String, String>>(
+            future: fetchWeather(),  // Llama a la función para obtener los datos
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator(); // Estado de carga
+              } else if (snapshot.hasData) {
+                // Si tiene datos
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Clima: ${snapshot.data!['condition']} - ${snapshot.data!['temperature']}°C",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "Consejo: Disfruta del clima mientras exploras!",
+                        style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
+                      ),
+                    ],
+                  ),
+                );
+              } else if (snapshot.hasError) {
+                // Si hay un error
+                return Text("Error al cargar el clima: ${snapshot.error}");
+              } else {
+                // Si no tiene datos
+                return Text("Error al cargar el clima");
+              }
+            },
+          ),
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,
@@ -20,8 +71,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 MenuOption(
                   title: 'Puntos Turísticos',
-                  imagePath:
-                      'assets/images/PuntosTuristicos0.png', // Imagen local
+                  imagePath: 'assets/images/PuntosTuristicos0.png',
                   gradientColors: [Colors.orange, Colors.deepOrange],
                   onTap: () {
                     Navigator.push(

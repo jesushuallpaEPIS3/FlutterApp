@@ -22,13 +22,13 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 2; // Establece Home como la pantalla inicial
+  int _selectedIndex = 0; // Establece Favoritos como la pantalla inicial
 
   // Lista de pantallas para cada índice del BottomNavigationBar
   final List<Widget> _screens = [
     FavoritesScreen(), // Pantalla de Favoritos
+    HomeScreen(), // Pantalla Principal (Home)
     SettingsScreen(), // Pantalla de Configuración
-    HomeScreen(), // Pantalla Principal
   ];
 
   // Función para actualizar la pantalla seleccionada
@@ -54,12 +54,12 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Favoritos',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Configuración',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Configuración',
           ),
         ],
       ),

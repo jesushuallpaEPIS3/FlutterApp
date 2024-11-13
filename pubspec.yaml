@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   device_info_plus: ^11.1.0
+  provider: ^6.0.0
   flutter:
     sdk: flutter
   http: ^1.2.2
@@ -31,15 +32,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-    - assets/images/PT1.png
-    - assets/images/PT22.png
-    - assets/images/1 RUTA DE ACCESO A TARATA/20240420054308_IMG_6412 (1).jpg
-    - assets/images/1 RUTA DE ACCESO A TARATA/Captura de pantalla 2024-09-30 094247.png
-    - assets/images/1 RUTA DE ACCESO A TARATA/20240420055036_IMG_6421 (1).jpg
-    - assets/images/1 RUTA DE ACCESO A TARATA/WhatsApp Image 2024-09-30 at 15.09.40.jpeg
-    - assets/images/2 SENDERISMO/[000789] (2).jpg
-    - assets/images/2 SENDERISMO/Cuevas de Quala Quala.png
-    - assets/images/2 SENDERISMO/20240315105831_IMG_2472.jpg
-    - assets/images/3 RELAJAMIENTO/20240219162533_IMG_0855.jpg
-    - assets/images/3 RELAJAMIENTO/458972257_919413446892029_6951314521824928962_n.jpg
-
+    - "assets/images/1 RUTA DE ACCESO A TARATA/"
+    - "assets/images/2 SENDERISMO/"
+    - "assets/images/3 RELAJAMIENTO/"

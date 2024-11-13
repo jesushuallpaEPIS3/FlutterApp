@@ -42,24 +42,20 @@ class FavoritesScreen extends StatelessWidget {
             child: ListView(
               children: const [
                 FavoriteCard(
-                  imageUrl:
-                      'https://example.com/image1.jpg', // Reemplaza con la URL de la imagen
+                  imageUrl: 'assets/images/RutaTarata0.png', // Usando imagen desde assets
                   title: 'Camino Inca Tarata - Santa María',
-                  description:
-                      'A 15 km de Tarata, 15 min en auto, con recorrido libre.',
+                  description: 'A 15 km de Tarata, 15 min en auto, con recorrido libre.',
                   rating: 4.9,
                 ),
                 FavoriteCard(
-                  imageUrl:
-                      'https://example.com/image2.jpg', // Reemplaza con la URL de la imagen
-                  title: 'Otro lugar',
+                  imageUrl: 'assets/images/PuntosTuristicos0.png', // Usando imagen desde assets
+                  title: 'Puntos Turístico',
                   description: 'Descripción del lugar.',
                   rating: 4.9,
                 ),
                 FavoriteCard(
-                  imageUrl:
-                      'https://example.com/image3.jpg', // Reemplaza con la URL de la imagen
-                  title: 'Un tercer lugar',
+                  imageUrl: 'assets/images/RutaTarata0.png', // Usando imagen desde assets
+                  title: 'Senderismo',
                   description: 'Otra descripción.',
                   rating: 4.9,
                 ),
@@ -95,13 +91,13 @@ class FavoriteCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Imagen de la tarjeta
+          // Imagen de la tarjeta desde assets
           ClipRRect(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(15.0),
               bottomLeft: Radius.circular(15.0),
             ),
-            child: Image.network(
+            child: Image.asset(
               imageUrl,
               height: 100.0,
               width: 100.0,
