@@ -18,6 +18,9 @@ dependencies:
   url_launcher: ^6.0.20 
   flutter_cache_manager: ^3.3.0
   flutter_map_mbtiles: ^1.0.3
+  google_fonts: ^6.2.1
+  flutter_vector_icons: ^2.0.0
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:

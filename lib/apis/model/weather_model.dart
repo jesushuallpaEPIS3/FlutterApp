@@ -12,7 +12,8 @@ class WeatherData {
   factory WeatherData.fromJson(Map<String, dynamic> json) {
     return WeatherData(
       name: json['name'], // Nombre de la ubicación
-      currentTemperature: (json['main']['temp'] - 273.15), // Convertir Kelvin a Celsius
+      currentTemperature:
+          (json['main']['temp'] - 273.15), // Convertir Kelvin a Celsius
       weather: List<WeatherInfo>.from(
         json['weather'].map(
           (weather) => WeatherInfo.fromJson(weather),
