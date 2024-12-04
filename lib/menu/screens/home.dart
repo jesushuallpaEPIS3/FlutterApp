@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart'; // Importación de la pantalla Home.
-import 'screens/settings_screen.dart'; // Importa la pantalla de configuraciones
+import 'home_screen.dart'; // Importación de la pantalla Home.
+import 'settings_screen.dart'; // Importa la pantalla de configuraciones
 
 void main() {
   runApp(MyApp());

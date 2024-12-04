@@ -40,14 +40,7 @@ class TouristDetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 8.0),
                   Row(
-                    children: [
-                      const Icon(Icons.star, color: Colors.yellow, size: 24.0),
-                      const SizedBox(width: 4.0),
-                      Text(
-                        spot.rating.toString(),
-                        style: const TextStyle(fontSize: 18.0),
-                      ),
-                    ],
+                    children: [],
                   ),
                   const SizedBox(height: 16.0),
                   Text(

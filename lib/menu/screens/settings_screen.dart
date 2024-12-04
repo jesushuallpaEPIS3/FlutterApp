@@ -32,7 +32,7 @@ class SettingsScreen extends StatelessWidget {
                 Icon(Icons.account_circle, size: 48.0),
                 SizedBox(width: 16.0),
                 Text(
-                  'Felipe Amorin',
+                  'usuario',
                   style: TextStyle(fontSize: 18.0),
                 ),
               ],
@@ -45,7 +45,8 @@ class SettingsScreen extends StatelessWidget {
             leading: const Icon(Icons.dark_mode),
             title: const Text('Modo Oscuro'),
             trailing: Switch(
-              value: themeProvider.isDarkMode, // El valor del switch depende del tema
+              value: themeProvider
+                  .isDarkMode, // El valor del switch depende del tema
               onChanged: (value) {
                 themeProvider.toggleTheme(); // Cambia el estado del tema
               },

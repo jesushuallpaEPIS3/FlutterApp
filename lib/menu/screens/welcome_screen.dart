@@ -56,19 +56,6 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 35),
                       const Spacer(flex: 5),
-                      Text(
-                        'Bienvenido',
-                        style: GoogleFonts.poppins(
-                          fontSize: size.height * .040,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        'Descubre mas!',
-                        style:
-                            GoogleFonts.poppins(fontSize: size.height * .024),
-                      ),
-                      const Spacer(flex: 5),
                       Row(
                         children: <Widget>[
                           Expanded(
@@ -76,20 +63,12 @@ class WelcomeScreen extends StatelessWidget {
                               onPressed: () =>
                                   _openPage(context, const LoginPage()),
                               child: Text(
-                                'Iniciar sesión',
+                                'Comenzar Aventura',
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14,
                                 ),
                               ),
-                            ),
-                          ),
-                          const SizedBox(width: 30),
-                          Expanded(
-                            child: RectangularButton(
-                              onPressed: () =>
-                                  _openPage(context, const RegisterForm()),
-                              label: 'sin conexión',
                             ),
                           ),
                         ],

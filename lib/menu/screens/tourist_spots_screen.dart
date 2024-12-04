@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'TouristDetailScreen.dart';
 import '../models/tourist_spot.dart'; // Importa la lista touristSpots directamente.
-import '../home.dart'; // Importa la pantalla Home.
+import 'home.dart'; // Importa la pantalla Home.
 import 'settings_screen.dart'; // Importa la pantalla de Configuración.
 
 class TouristSpotsScreen extends StatefulWidget {
@@ -15,7 +15,27 @@ class TouristSpotsScreen extends StatefulWidget {
 }
 
 class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
-  int _selectedIndex = 2; // Índice inicial para la pantalla Home.
+  int _selectedIndex = 1; // Índice inicial para la pantalla Home.
+  List<TouristSpot> filteredSpots = [];
+  String searchText = "";
+
+  @override
+  void initState() {
+    super.initState();
+    _filterTouristSpots();
+  }
+
+  void _filterTouristSpots() {
+    // Actualiza la lista de puntos turísticos según el texto ingresado y la categoría.
+    setState(() {
+      filteredSpots = touristSpots
+          .where((spot) =>
+              (widget.category == "Puntos_Turísticos" ||
+                  spot.category == widget.category) &&
+              spot.name.toLowerCase().contains(searchText.toLowerCase()))
+          .toList();
+    });
+  }
 
   void _onItemTapped(int index) {
     // Cambiar la pantalla seleccionada en el BottomNavigationBar.
@@ -27,13 +47,10 @@ class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
       // Navegar a la pantalla correspondiente.
       switch (index) {
         case 0:
-          // TODO: Implementar funcionalidad para favoritos.
-          break;
-        case 1:
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => SettingsScreen()));
           break;
-        case 2:
+        case 1:
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => MainScreen()));
           break;
@@ -59,13 +76,6 @@ class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Filtrar los puntos turísticos según la categoría seleccionada.
-    List<TouristSpot> filteredSpots = widget.category == "Puntos_Turísticos"
-        ? touristSpots
-        : touristSpots
-            .where((spot) => spot.category == widget.category)
-            .toList();
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF3D6B35), // Verde Andino.
@@ -79,10 +89,8 @@ class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
             child: TextField(
               onChanged: (text) {
                 setState(() {
-                  filteredSpots = touristSpots
-                      .where((spot) =>
-                          spot.name.toLowerCase().contains(text.toLowerCase()))
-                      .toList();
+                  searchText = text;
+                  _filterTouristSpots();
                 });
               },
               decoration: InputDecoration(
@@ -145,10 +153,6 @@ class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favoritos',
-          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Configuración',
@@ -244,22 +248,6 @@ class FeaturedTouristSpotCard extends StatelessWidget {
                       fontSize: 14.0,
                       color: Colors.white,
                     ),
-                  ),
-                  const SizedBox(height: 4.0),
-                  Row(
-                    children: [
-                      Icon(Icons.star, color: Colors.yellow[700], size: 18.0),
-                      const SizedBox(width: 4.0),
-                      Text(
-                        rating.toString(),
-                        style: const TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const Spacer(),
-                      const Icon(Icons.favorite, color: Colors.red, size: 24.0),
-                    ],
                   ),
                 ],
               ),

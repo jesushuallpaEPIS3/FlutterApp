@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../menu/widgets/common_widgets.dart';
 import '../../menu/widgets/inverted_top_border_clipper.dart';
 import '../../menu/widgets/text_input_find_out.dart';
-import '../../menu/home.dart';
+import '../screens/home.dart';
 
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
@@ -87,26 +87,8 @@ class LoginPage extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
                                   const SizedBox(height: 60),
-                                  const TextInputFindOut(
-                                    label: 'Nombre de usuario',
-                                    iconData: FontAwesome.user,
-                                    textInputType: TextInputType.emailAddress,
-                                  ),
                                   const SizedBox(height: 20),
-                                  const TextInputFindOut(
-                                    label: 'Constraseña',
-                                    iconData: Icons.lock_outline,
-                                    textInputType:
-                                        TextInputType.visiblePassword,
-                                  ),
                                   const SizedBox(height: 10),
-                                  Text(
-                                    '¿Olvidaste tu contraseña?',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.grey[600],
-                                    ),
-                                  ),
                                   const SizedBox(height: 20),
                                   SizedBox(
                                     width: size.width * .65,
@@ -125,7 +107,7 @@ class LoginPage extends StatelessWidget {
                                         backgroundColor: Colors.pinkAccent,
                                       ),
                                       child: const Text(
-                                        'Iniciar sesion',
+                                        'Ingresar',
                                         style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600,
@@ -159,7 +141,7 @@ class _DragDownIndication extends StatelessWidget {
     return Column(
       children: [
         const Text(
-          'Inicia sesión',
+          'Comenzar Aventura',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/menu/home.dart'; // Asegúrate de importar WeatherHome o MainScreen desde menu/main.dart
+import '../menu/screens/home.dart'; // Asegúrate de importar WeatherHome o MainScreen desde menu/main.dart
 import 'screens/form_one.dart';
 
 void main() {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../menu/home.dart';
+import '../screens/home.dart';
 import '../../menu/widgets/common_widgets.dart';
 import '../../menu/widgets/inverted_top_border_clipper.dart';
 import '../../menu/widgets/text_input_find_out.dart';
