@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart'; // Asegúrate de que esta importación esté presente
-import '../models/tourist_spot.dart'; // Importa el modelo TouristSpot
-import 'package:url_launcher/url_launcher.dart'; // Importa para poder usar launchUrl
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:url_launcher/url_launcher.dart'; // Para abrir URLs
+
+import '../models/tourist_spot.dart'; // Modelo TouristSpot
 
 class TouristDetailScreen extends StatelessWidget {
   final TouristSpot spot;
@@ -66,78 +66,38 @@ class TouristDetailScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8.0),
-                  // Teléfono
-                  Row(
-                    children: [
-                      const Icon(Icons.phone, color: Colors.green),
-                      const SizedBox(width: 8.0),
-                      Text(
-                        spot.phoneNumber,
-                        style: const TextStyle(fontSize: 16.0),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8.0),
-                  // Página web
-                  Row(
-                    children: [
-                      const Icon(Icons.web, color: Colors.blue),
-                      const SizedBox(width: 8.0),
-                      InkWell(
-                        child: Text(
-                          spot.website,
-                          style: const TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.blue,
-                              decoration: TextDecoration.underline),
-                        ),
-                        onTap: () {
-                          launchUrl(Uri.parse(spot.website));
-                        },
-                      ),
-                    ],
-                  ),
                   const SizedBox(height: 16.0),
-                  // Botón para Google Maps
                   ElevatedButton(
                     onPressed: () {
-                      launchUrl(Uri.parse(
-                          'https://www.google.com/maps/search/?api=1&query=${spot.latitude},${spot.longitude}'));
+                      // Abrir Google Maps con las coordenadas
+                      final url =
+                          'https://www.google.com/maps/dir/?api=1&destination=${spot.latitude},${spot.longitude}';
+                      launchUrl(Uri.parse(url));
                     },
-                    child: const Text('Ver en Google Maps'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.teal,
+                    ),
+                    child: const Text('Ver Ruta en Google Maps'),
                   ),
                   const SizedBox(height: 16.0),
                   // Contenedor del mapa
                   Container(
                     height: 300.0,
-                    child: FlutterMap(
-                      options: MapOptions(
-                        initialCenter: LatLng(spot.latitude, spot.longitude),
-                        initialZoom: 13.0,
+                    child: GoogleMap(
+                      initialCameraPosition: CameraPosition(
+                        target: LatLng(spot.latitude, spot.longitude),
+                        zoom: 14,
                       ),
-                      children: [
-                        // Cambia 'layers' por 'children'
-                        TileLayer(
-                          urlTemplate:
-                              'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                          subdomains: ['a', 'b', 'c'],
+                      markers: {
+                        Marker(
+                          markerId: MarkerId(spot.name),
+                          position: LatLng(spot.latitude, spot.longitude),
+                          infoWindow: InfoWindow(
+                            title: spot.name,
+                            snippet: spot.location,
+                          ),
                         ),
-                        MarkerLayer(
-                          markers: [
-                            Marker(
-                              width: 80.0,
-                              height: 80.0,
-                              point: LatLng(spot.latitude, spot.longitude),
-                              child: const Icon(
-                                Icons.location_pin,
-                                color: Colors.red,
-                                size: 40.0,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                      },
                     ),
                   ),
                 ],

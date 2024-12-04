@@ -1,4 +1,4 @@
-import 'package:flutter_application_2/menu/models/comments.dart';
+import 'package:tarea2_geolocalizacion/menu/models/comments.dart';
 
 class Place {
   Place({

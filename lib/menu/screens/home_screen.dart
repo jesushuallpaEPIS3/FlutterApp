@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../apis/services/weather_service.dart';
 import 'tourist_spots_screen.dart';
-import 'package:flutter_application_2/apis/services/weather_service.dart'; // Servicio de clima
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatelessWidget {

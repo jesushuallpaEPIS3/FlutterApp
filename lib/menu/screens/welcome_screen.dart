@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/menu/forms/login_form.dart';
-import 'package:flutter_application_2/menu/forms/register_form.dart';
-import 'package:flutter_application_2/menu/screens/widgets/animated_background.dart';
-import 'package:flutter_application_2/menu/screens/widgets/snake_button.dart';
-import 'package:flutter_application_2/menu/widgets/common_widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../forms/login_form.dart';
+import '../forms/register_form.dart';
+import '../widgets/common_widgets.dart';
+import 'widgets/animated_background.dart';
+import 'widgets/snake_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({super.key});

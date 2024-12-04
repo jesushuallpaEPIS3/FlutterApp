@@ -1,3 +1,4 @@
+// Configuración de repositorios para todos los subproyectos
 allprojects {
     repositories {
         google()
@@ -5,14 +6,18 @@ allprojects {
     }
 }
 
+// Definir la ubicación del directorio de construcción
 rootProject.buildDir = "../build"
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
+
+// Asegurar que el módulo ':app' se evalúe antes que otros
 subprojects {
     project.evaluationDependsOn(":app")
 }
 
+// Tarea personalizada para limpiar el directorio de construcción
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }

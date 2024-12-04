@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/menu/models/place.dart';
 
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../models/place.dart';
 
 class FindOutLogo extends StatelessWidget {
   const FindOutLogo({

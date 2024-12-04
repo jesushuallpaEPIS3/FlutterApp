@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/menu/screens/welcome_screen.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+
+import 'screens/welcome_screen.dart';
 
 class FindOutApp extends StatelessWidget {
   const FindOutApp({super.key});
