@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/tourist_spots_screen.dart';
+import 'tourist_spots_screen.dart';
 import 'package:flutter_application_2/apis/services/weather_service.dart'; // Servicio de clima
 import 'package:intl/intl.dart';
 
@@ -16,9 +16,12 @@ class HomeScreen extends StatelessWidget {
     }
 
     // Accede a los valores de la clase WeatherData
-    String temperature = weatherData.currentTemperature.toStringAsFixed(1);  // Redondeo a 1 decimal
-    String condition = weatherData.weather.isNotEmpty ? weatherData.weather[0].main : 'Desconocido';
-    
+    String temperature = weatherData.currentTemperature
+        .toStringAsFixed(1); // Redondeo a 1 decimal
+    String condition = weatherData.weather.isNotEmpty
+        ? weatherData.weather[0].main
+        : 'Desconocido';
+
     return {'temperature': temperature, 'condition': condition};
   }
 
@@ -32,7 +35,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           FutureBuilder<Map<String, String>>(
-            future: fetchWeather(),  // Llama a la función para obtener los datos
+            future: fetchWeather(), // Llama a la función para obtener los datos
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return CircularProgressIndicator(); // Estado de carga
@@ -44,11 +47,13 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Clima: ${snapshot.data!['condition']} - ${snapshot.data!['temperature']}°C",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       Text(
                         "Consejo: Disfruta del clima mientras exploras!",
-                        style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
+                        style: TextStyle(
+                            fontSize: 14, fontStyle: FontStyle.italic),
                       ),
                     ],
                   ),

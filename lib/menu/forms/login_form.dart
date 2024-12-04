@@ -3,7 +3,6 @@ import 'package:flutter_application_2/menu/widgets/common_widgets.dart';
 import 'package:flutter_application_2/menu/widgets/inverted_top_border_clipper.dart';
 import 'package:flutter_application_2/menu/widgets/text_input_find_out.dart';
 import 'package:flutter_application_2/menu/home.dart';
-import 'package:flutter_application_2/orix_gaming/orix_gaming_app.dart';
 
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
@@ -18,7 +17,7 @@ class LoginPage extends StatelessWidget {
       pageBuilder: (context, animation, secondaryAnimation) {
         return FadeTransition(
           opacity: animation,
-          child: OrixGamingApp(),
+          child: MainScreen(),
         );
       },
     );

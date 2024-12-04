@@ -72,8 +72,8 @@ final List<TouristSpot> touristSpots = [
     location: "Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 934",
     website: "https://plazatarata.com.pe",
-    latitude: -17.547, // Coordenadas de ejemplo
-    longitude: -70.212, // Coordenadas de ejemplo
+    latitude: -17.474616683716146, // Coordenadas de ejemplo
+    longitude: -70.03225087329966, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Mercado Central de Abastos Tarata",
@@ -88,8 +88,8 @@ final List<TouristSpot> touristSpots = [
     location: "Calle 28 de Julio, Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 935",
     website: "https://mercadotarata.com.pe",
-    latitude: -17.547, // Coordenadas de ejemplo
-    longitude: -70.212, // Coordenadas de ejemplo
+    latitude: -17.475553933153424, // Coordenadas de ejemplo
+    longitude: -70.03129357971393, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Templo San Benedicto",
@@ -104,8 +104,8 @@ final List<TouristSpot> touristSpots = [
     location: "Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 936",
     website: "https://templosanbenedicto.com.pe",
-    latitude: -17.547, // Coordenadas de ejemplo
-    longitude: -70.212, // Coordenadas de ejemplo
+    latitude: -17.474007972711632, // Coordenadas de ejemplo
+    longitude: -70.03183994117757, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Municipalidad Provincial de Tarata",
@@ -120,8 +120,8 @@ final List<TouristSpot> touristSpots = [
     location: "Plaza Principal, Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 937",
     website: "https://municipalidadtarata.gob.pe",
-    latitude: -17.547, // Coordenadas de ejemplo
-    longitude: -70.212, // Coordenadas de ejemplo
+    latitude: -17.47506293454032, // Coordenadas de ejemplo
+    longitude: -70.0317738091767, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Camino Inca",
@@ -134,8 +134,8 @@ final List<TouristSpot> touristSpots = [
     location: "Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 938",
     website: "https://caminoinca.com.pe",
-    latitude: -17.547, // Coordenadas de ejemplo
-    longitude: -70.212, // Coordenadas de ejemplo
+    latitude: -17.473115201693854, // Coordenadas de ejemplo
+    longitude: -70.03278081110396, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Cueva de Qala Qala",
@@ -148,8 +148,8 @@ final List<TouristSpot> touristSpots = [
     location: "Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 939",
     website: "https://cuevasqalqala.com.pe",
-    latitude: -17.547, // Coordenadas de ejemplo
-    longitude: -70.212, // Coordenadas de ejemplo
+    latitude: -17.468160404430183, // Coordenadas de ejemplo
+    longitude: -70.03738313941929, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Centro Arqueológico Santa María",
@@ -162,8 +162,8 @@ final List<TouristSpot> touristSpots = [
     location: "Santa María, Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 940",
     website: "https://arqueologiasantamaria.com.pe",
-    latitude: -17.547, // Coordenadas de ejemplo
-    longitude: -70.212, // Coordenadas de ejemplo
+    latitude: -17.470271978475918, // Coordenadas de ejemplo
+    longitude: -70.03783624154907, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Baños Termales de Putina - Ticaco",
@@ -176,8 +176,8 @@ final List<TouristSpot> touristSpots = [
     location: "Ticaco, Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 941",
     website: "https://banosputina.com.pe",
-    latitude: -17.547, // Coordenadas de ejemplo
-    longitude: -70.212, // Coordenadas de ejemplo
+    latitude: -17.43433649135329, // Coordenadas de ejemplo
+    longitude: -70.03833531796157, // Coordenadas de ejemplo
   ),
   TouristSpot(
     name: "Taller de Cerámica",
@@ -192,7 +192,7 @@ final List<TouristSpot> touristSpots = [
     location: "Ticaco, Tarata, Tacna, Perú",
     phoneNumber: "+51 952 603 942",
     website: "https://tallerdeceramicaticaco.com.pe",
-    latitude: -17.547, // Coordenadas de ejemplo
-    longitude: -70.212, // Coordenadas de ejemplo
+    latitude: -17.444647641918362, // Coordenadas de ejemplo
+    longitude: -70.0479086333008, // Coordenadas de ejemplo
   ),
 ];

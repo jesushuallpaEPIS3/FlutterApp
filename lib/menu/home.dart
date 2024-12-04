@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'favorites_screen.dart'; // Importación de la pantalla de Favoritos.
-import 'home_screen.dart'; // Importación de la pantalla Home.
-import 'settings_screen.dart'; // Importa la pantalla de configuraciones
+import 'screens/home_screen.dart'; // Importación de la pantalla Home.
+import 'screens/settings_screen.dart'; // Importa la pantalla de configuraciones
 
 void main() {
   runApp(MyApp());
@@ -26,7 +25,6 @@ class _MainScreenState extends State<MainScreen> {
 
   // Lista de pantallas para cada índice del BottomNavigationBar
   final List<Widget> _screens = [
-    FavoritesScreen(), // Pantalla de Favoritos
     HomeScreen(), // Pantalla Principal (Home)
     SettingsScreen(), // Pantalla de Configuración
   ];
@@ -49,10 +47,6 @@ class _MainScreenState extends State<MainScreen> {
         currentIndex: _selectedIndex, // Mantiene el índice actual
         onTap: _onItemTapped, // Cambia la pantalla al presionar un botón
         items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favoritos',
-          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',

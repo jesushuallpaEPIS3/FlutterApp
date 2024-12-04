@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/menu/screens/TouristDetailScreen.dart';
 import '../models/tourist_spot.dart'; // Importa la lista touristSpots directamente
-import '../favorites_screen.dart'; // Importa la pantalla de Favoritos.
 import '../home.dart'; // Importa la pantalla Home.
-import '../settings_screen.dart'; // Importa la pantalla de Configuración.
+import 'settings_screen.dart'; // Importa la pantalla de Configuración.
 
 class TouristSpotsScreen extends StatefulWidget {
   final String category; // Recibe la categoría
@@ -26,9 +25,6 @@ class _TouristSpotsScreenState extends State<TouristSpotsScreen> {
     // Navegación a las diferentes pantallas
     switch (index) {
       case 0:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => FavoritesScreen()));
-        break;
       case 1:
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => SettingsScreen()));

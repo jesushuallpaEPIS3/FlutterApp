@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart'; // Importa el paquete provider
 import '/themeprovider.dart'; // Importa el ThemeProvider
-import 'package:flutter_application_2/menu/settings_screen.dart'; // Importa la pantalla de configuración o la principal
+import 'package:flutter_application_2/menu/screens/settings_screen.dart'; // Importa la pantalla de configuración o la principal
 
 class FindOutApp extends StatelessWidget {
   const FindOutApp({super.key});
